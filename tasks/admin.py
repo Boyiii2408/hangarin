@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Priority, Category, Task, Note, Subtask
 
-# Register your models here.
 @admin.register(Priority)
 class PriorityAdmin(admin.ModelAdmin):
     list_display = ['name']

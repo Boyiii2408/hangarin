@@ -66,7 +66,6 @@
 <body>
 <div class="auth-card">
 
-    <!-- Brand -->
     <div class="text-center mb-4">
         <div class="brand-title">
             <i class="bi bi-check2-square"></i> Hangarin
@@ -74,7 +73,6 @@
         <p class="text-muted small">Your personal task manager</p>
     </div>
 
-    <!-- Tabs -->
     <ul class="nav nav-pills nav-justified mb-4" id="authTabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active w-100" id="login-tab"
@@ -90,12 +88,10 @@
 
     <div class="tab-content" id="authTabContent">
 
-        <!-- LOGIN TAB -->
         <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
             <form method="post" action="{% url 'account_login' %}">
                 {% csrf_token %}
 
-                <!-- Google Login -->
                 <div class="text-center mb-3">
                     <a href="{% provider_login_url 'google' %}"
                        class="btn social-btn text-dark w-100">
@@ -106,21 +102,18 @@
 
                 <div class="divider">or</div>
 
-                <!-- Username/Email -->
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Email or Username</label>
                     <input type="text" name="login" class="form-control form-control-lg"
                            placeholder="Enter your email or username" required />
                 </div>
 
-                <!-- Password -->
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Password</label>
                     <input type="password" name="password" class="form-control form-control-lg"
                            placeholder="Enter your password" required />
                 </div>
 
-                <!-- Remember + Forgot -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="loginCheck" checked />
@@ -131,7 +124,6 @@
                     </a>
                 </div>
 
-                <!-- Errors -->
                 {% if form.non_field_errors %}
                 <div class="alert alert-danger py-2 small">
                     {% for error in form.non_field_errors %}
@@ -146,5 +138,4 @@
             </form>
         </div>
 
-        <!-- REGISTER TAB -->
         <div class="tab-pane fade" id="pills-register" role="tabpanel">
