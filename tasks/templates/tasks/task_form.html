@@ -6,33 +6,33 @@
         <div class="card p-4">
             <h3 class="fw-bold mb-4">
                 <i class="bi bi-pencil-square"></i>
-                {% if form.instance.pk %}Edit Task{% else %}Create Task{% endif %}
+                {% if form.pk %}Edit Task{% else %}Create Task{% endif %}
             </h3>
             <form method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Title</label>
-                    <input type="text" name="title" value="{{ form.instance.title }}"
+                    <input type="text" name="title" value="{{ form.title }}"
                         class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Description</label>
                     <textarea name="description" class="form-control"
-                        rows="3">{{ form.instance.description }}</textarea>
+                        rows="3">{{ form.description }}</textarea>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Deadline</label>
                         <input type="datetime-local" name="deadline"
-                            class="form-control"
-                            value="{{ form.instance.deadline|date:'Y-m-d\TH:i' }}">
+                            class="form-control" required
+                            value="{{ form.deadline|date:'Y-m-d\TH:i' }}">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Status</label>
                         <select name="status" class="form-select">
-                            <option value="Pending" {% if form.instance.status == 'Pending' %}selected{% endif %}>Pending</option>
-                            <option value="In Progress" {% if form.instance.status == 'In Progress' %}selected{% endif %}>In Progress</option>
-                            <option value="Completed" {% if form.instance.status == 'Completed' %}selected{% endif %}>Completed</option>
+                            <option value="Pending" {% if form.status == 'Pending' %}selected{% endif %}>Pending</option>
+                            <option value="In Progress" {% if form.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                            <option value="Completed" {% if form.status == 'Completed' %}selected{% endif %}>Completed</option>
                         </select>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             <option value="">-- Select Priority --</option>
                             {% for priority in priorities %}
                             <option value="{{ priority.id }}"
-                                {% if form.instance.priority_id == priority.id %}selected{% endif %}>
+                                {% if form.priority_id == priority.id %}selected{% endif %}>
                                 {{ priority.name }}
                             </option>
                             {% endfor %}
@@ -55,7 +55,7 @@
                             <option value="">-- Select Category --</option>
                             {% for category in categories %}
                             <option value="{{ category.id }}"
-                                {% if form.instance.category_id == category.id %}selected{% endif %}>
+                                {% if form.category_id == category.id %}selected{% endif %}>
                                 {{ category.name }}
                             </option>
                             {% endfor %}
